@@ -9,6 +9,7 @@ public class Libros {
 		// TODO Auto-generated method stub
 		Conexionbase conexionbase = new Conexionbase("libros");
 		LibrosGetSets lb;
+		//sdfsfsdfsdfsdfsdfsdfsdfdsfsdfsd
 	}
 
 }
