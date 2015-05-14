@@ -1,6 +1,13 @@
 package getsetvariables;
 
-public class LibrosGetSets {
+import java.awt.Graphics;
+import java.awt.Point;
+
+import javax.swing.event.ChangeListener;
+import javax.swing.text.Caret;
+import javax.swing.text.JTextComponent;
+
+public class LibrosGetSets  {
 	private String nombrelibro;
 	private String precioAlquiler;
 	private String imgLibro;
@@ -70,6 +77,7 @@ public class LibrosGetSets {
 				+ ", prestadoA=" + prestadoA + ", diasDeDevolucion="
 				+ diasDeDevolucion + ", retrasoDias=" + retrasoDias + "]";
 	}
+	
 	
 	
 }

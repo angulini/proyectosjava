@@ -12,8 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JInternalFrame;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
+
 
 import java.awt.Color;
 
@@ -47,6 +46,7 @@ public class Gestion {
 	String retrasoDias;
 	LibrosGetSets lb;
 	Conexionbase conexionbase = new Conexionbase("libros");
+	private JTextField textField_8;
 	/**
 	 * Launch the application.
 	 */
@@ -90,12 +90,37 @@ public class Gestion {
 			e.printStackTrace();
 		}
 		
+		JInternalFrame internalFrame_1 = new JInternalFrame("New JInternalFrame");
+		internalFrame_1.setBounds(449, 304, 632, 299);
+		frame.getContentPane().add(internalFrame_1);
+		internalFrame_1.getContentPane().setLayout(null);
+		
+		textField_8 = new JTextField();
+		textField_8.setBounds(197, 87, 200, 50);
+		internalFrame_1.getContentPane().add(textField_8);
+		textField_8.setColumns(10);
+		
+		JLabel lblNombreDelLibro = new JLabel("nombre del libro");
+		lblNombreDelLibro.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNombreDelLibro.setBounds(41, 105, 112, 14);
+		internalFrame_1.getContentPane().add(lblNombreDelLibro);
+		
+		JButton btnDeleteBook_1 = new JButton("delete book");
+		btnDeleteBook_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnDeleteBook_1.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
+		btnDeleteBook_1.setBounds(436, 94, 170, 37);
+		internalFrame_1.getContentPane().add(btnDeleteBook_1);
+		internalFrame_1.setVisible(true);
+		
 		internalFrame.setClosable(true);
 		internalFrame.setResizable(true);
 		internalFrame.setMaximizable(true);
 		internalFrame.setBorder(new LineBorder(new Color(255, 0, 0), 3, true));
 		
-		internalFrame.setBounds(462, 144, 632, 417);
+		internalFrame.setBounds(449, 557, 632, 417);
 		
 		frame.getContentPane().add(internalFrame);
 		internalFrame.getContentPane().setLayout(null);
@@ -210,13 +235,28 @@ public class Gestion {
 		lblBuscarLibro.setBounds(33, 80, 122, 14);
 		frame.getContentPane().add(lblBuscarLibro);
 		
+			JTextArea textArea = new JTextArea();
+		textArea.setBounds(33, 108, 408, 196);
+		frame.getContentPane().add(textArea);
 		JButton btnBuscar = new JButton("buscar");
+		btnBuscar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String nombredeLibro = textField.getText();
+				
+				lb = new LibrosGetSets(nombredeLibro, "", "", "", "", "", "");
+				
+				conexionbase.abrir();
+				lb=BBDDlibros.buscarLibro(lb, conexionbase);
+				
+				textArea.setText(lb.getNombrelibro()+"  "+lb.getPrecioAlquiler()+"  "+ lb.getImgLibro()+ "  "+ lb.getDisponibilidad()+ "  " + lb.getPrestadoA()+ "" + lb.getDiasDeDevolucion()+ " " + lb.getRetrasoDias()  );
+				conexionbase.cerrar();
+				
+			}
+		});
 		btnBuscar.setBounds(352, 76, 89, 23);
 		frame.getContentPane().add(btnBuscar);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(33, 108, 408, 196);
-		frame.getContentPane().add(textArea);
+	
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(33, 304, 408, 190);
@@ -239,6 +279,11 @@ public class Gestion {
 		frame.getContentPane().add(btnUpdateEstate);
 		
 		JButton btnDeleteBook = new JButton("delete book");
+		btnDeleteBook.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnDeleteBook.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
 		btnDeleteBook.setBounds(563, 198, 137, 36);
 		frame.getContentPane().add(btnDeleteBook);
