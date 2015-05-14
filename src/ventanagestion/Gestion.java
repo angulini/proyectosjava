@@ -281,7 +281,7 @@ public class Gestion {
 		JButton btnDeleteBook = new JButton("delete book");
 		btnDeleteBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//gggggg
+				//asdasdsdasdasdasdasdasdasdasdas
 			}
 		});
 		btnDeleteBook.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
