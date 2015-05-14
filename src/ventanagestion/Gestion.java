@@ -1,5 +1,7 @@
 package ventanagestion;
 
+import getsetvariables.LibrosGetSets;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,6 +19,9 @@ import java.awt.Color;
 
 import javax.swing.border.LineBorder;
 
+import conexionbase.BBDDlibros;
+import conexionbase.Conexionbase;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
@@ -32,7 +37,16 @@ public class Gestion {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-
+	
+	String nombrelibro;
+	String precioAlquiler;
+	String imgLibro;
+	String disponibilidad;
+	String prestadoA;
+	String diasDeDevolucion;
+	String retrasoDias;
+	LibrosGetSets lb;
+	Conexionbase conexionbase = new Conexionbase("libros");
 	/**
 	 * Launch the application.
 	 */
@@ -129,6 +143,23 @@ public class Gestion {
 		internalFrame.getContentPane().add(textField_7);
 		
 		JButton btnRegister = new JButton("register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				String nombredelibro = textField_1.getText();
+				String preciodeAlquiler = textField_2.getText();
+				String imgdeLibro = textField_3.getText();
+				String disponibilidaddellibro = textField_4.getText();
+				String libroprestadoA = textField_5.getText();
+				String diasDDevolucion = textField_6.getText();
+				String retrasodeDias = textField_7.getText();
+				
+				lb = new LibrosGetSets(nombredelibro, preciodeAlquiler, imgdeLibro, disponibilidaddellibro, libroprestadoA, diasDDevolucion, retrasodeDias);
+				conexionbase.abrir();
+				BBDDlibros.nuevapelicula(lb, conexionbase);
+				conexionbase.cerrar();
+			}
+		});
 		btnRegister.setBorder(new LineBorder(new Color(0, 255, 0), 2, true));
 		btnRegister.setBounds(237, 301, 136, 50);
 		internalFrame.getContentPane().add(btnRegister);

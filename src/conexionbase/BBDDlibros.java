@@ -19,7 +19,7 @@ public class BBDDlibros {
 	private static ResultSet reg;
 	
 	public static boolean nuevapelicula (LibrosGetSets lb, Conexionbase bd){
-		String cadena="INSERT INTO libros VALUES('" + lb.getNombrelibro() + "'," +lb.getPrecioAlquiler()+","+ lb.getImgLibro()+",'"+ lb.getDisponibilidad() +"','"+ lb.getPrestadoA()+"',"+lb.getDiasDeDevolucion()+","+lb.getRetrasoDias()+")"; 	
+		String cadena="INSERT INTO seguimientolibros VALUES('" + lb.getNombrelibro() + "','" +lb.getPrecioAlquiler()+"','"+ lb.getImgLibro()+"','"+ lb.getDisponibilidad() +"','"+ lb.getPrestadoA()+"','"+lb.getDiasDeDevolucion()+"','"+lb.getRetrasoDias()+"')"; 	
 		
 		try{
 		c=bd.getConexion();
