@@ -90,8 +90,16 @@ public class Gestion {
 			e.printStackTrace();
 		}
 		
-		JInternalFrame internalFrame_1 = new JInternalFrame("New JInternalFrame");
+		JInternalFrame internalFrame_1 = new JInternalFrame("delete book");
 		internalFrame_1.setBounds(449, 304, 632, 299);
+		internalFrame_1.setVisible(false);
+		internalFrame_1.setClosable(true);
+		try {
+			internalFrame_1.setClosed(true);
+		} catch (PropertyVetoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		frame.getContentPane().add(internalFrame_1);
 		internalFrame_1.getContentPane().setLayout(null);
 		
@@ -105,7 +113,7 @@ public class Gestion {
 		lblNombreDelLibro.setBounds(41, 105, 112, 14);
 		internalFrame_1.getContentPane().add(lblNombreDelLibro);
 		
-		JButton btnDeleteBook_1 = new JButton("delete book");
+		JButton btnDeleteBook_1 = new JButton("delete");
 		btnDeleteBook_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -113,7 +121,7 @@ public class Gestion {
 		btnDeleteBook_1.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
 		btnDeleteBook_1.setBounds(436, 94, 170, 37);
 		internalFrame_1.getContentPane().add(btnDeleteBook_1);
-		internalFrame_1.setVisible(true);
+		
 		
 		internalFrame.setClosable(true);
 		internalFrame.setResizable(true);
@@ -281,7 +289,8 @@ public class Gestion {
 		JButton btnDeleteBook = new JButton("delete book");
 		btnDeleteBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//asdasdsdasdasdasdasdasdasdasdas
+				internalFrame_1.setVisible(true);
+				
 			}
 		});
 		btnDeleteBook.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
