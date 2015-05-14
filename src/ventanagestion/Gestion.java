@@ -112,7 +112,7 @@ public class Gestion {
 		lblNombreDelLibro.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNombreDelLibro.setBounds(41, 105, 112, 14);
 		internalFrame_1.getContentPane().add(lblNombreDelLibro);
-		
+		//ghhhhh
 		JButton btnDeleteBook_1 = new JButton("delete");
 		btnDeleteBook_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
