@@ -12,10 +12,14 @@ import javax.swing.JPanel;
 import javax.swing.JInternalFrame;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Color;
+
 import javax.swing.border.LineBorder;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.beans.PropertyVetoException;
 
 public class Gestion {
 
@@ -61,31 +65,24 @@ public class Gestion {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(191, 77, 137, 20);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JLabel lblBuscarLibro = new JLabel("buscar libro por nombre");
-		lblBuscarLibro.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBuscarLibro.setBounds(33, 80, 122, 14);
-		frame.getContentPane().add(lblBuscarLibro);
-		
-		JButton btnBuscar = new JButton("buscar");
-		btnBuscar.setBounds(352, 76, 89, 23);
-		frame.getContentPane().add(btnBuscar);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(33, 108, 408, 196);
-		frame.getContentPane().add(textArea);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(33, 304, 408, 190);
-		frame.getContentPane().add(panel);
 		
 		JInternalFrame internalFrame = new JInternalFrame("register new book");
+		internalFrame.setOpaque(true);
+		internalFrame.setVisible(false);
+		try {
+			internalFrame.setClosed(true);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		internalFrame.setClosable(true);
+		internalFrame.setResizable(true);
+		internalFrame.setMaximizable(true);
 		internalFrame.setBorder(new LineBorder(new Color(255, 0, 0), 3, true));
-		internalFrame.setBounds(486, 155, 632, 417);
+		
+		internalFrame.setBounds(462, 144, 632, 417);
+		
 		frame.getContentPane().add(internalFrame);
 		internalFrame.getContentPane().setLayout(null);
 		
@@ -171,10 +168,33 @@ public class Gestion {
 		lblDiasDeRetraso.setBounds(91, 234, 90, 27);
 		internalFrame.getContentPane().add(lblDiasDeRetraso);
 		
+		
+		textField = new JTextField();
+		textField.setBounds(191, 77, 137, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblBuscarLibro = new JLabel("buscar libro por nombre");
+		lblBuscarLibro.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBuscarLibro.setBounds(33, 80, 122, 14);
+		frame.getContentPane().add(lblBuscarLibro);
+		
+		JButton btnBuscar = new JButton("buscar");
+		btnBuscar.setBounds(352, 76, 89, 23);
+		frame.getContentPane().add(btnBuscar);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(33, 108, 408, 196);
+		frame.getContentPane().add(textArea);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(33, 304, 408, 190);
+		frame.getContentPane().add(panel);
+		
 		JButton btnRigisterBook = new JButton("rigister book");
 		btnRigisterBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				internalFrame.setVisible(true);
 			}
 		});
 		btnRigisterBook.setBackground(new Color(0, 255, 255));
@@ -206,6 +226,5 @@ public class Gestion {
 		btnDeleteRentedPerson.setBorder(new LineBorder(new Color(255, 0, 0), 2, true));
 		btnDeleteRentedPerson.setBounds(786, 307, 137, 36);
 		frame.getContentPane().add(btnDeleteRentedPerson);
-		internalFrame.setVisible(true);
 	}
 }
